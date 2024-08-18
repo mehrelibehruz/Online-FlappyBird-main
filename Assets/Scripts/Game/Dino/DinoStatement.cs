@@ -1,5 +1,5 @@
 using Datas;
-using Helpers;
+using Utils;
 using UnityEngine;
 
 public class DinoStatement : MonoBehaviour

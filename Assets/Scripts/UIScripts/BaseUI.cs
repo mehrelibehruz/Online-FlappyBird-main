@@ -2,13 +2,7 @@ using UnityEngine;
 
 public abstract class BaseUI : MonoBehaviour
 {
-    // [SerializeField] public GameObject gameOver_Panel;
-    public virtual void Click()
-    {
-
-    }
-    public virtual void GetButtonIndex(int index)
-    {
-
-    }
+    public int SceneIndex { get; set; }
+    public string SceneName { get; set; }
+    public string ClassName { get; set; }
 }

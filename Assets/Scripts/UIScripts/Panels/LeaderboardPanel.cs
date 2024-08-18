@@ -1,6 +1,6 @@
 ﻿using TMPro;
 using Datas;
-using Helpers;
+using Utils;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,16 +13,22 @@ public class LeaderboardPanel : BasePanel
     List<TextMeshProUGUI> textObjects_score, textObjects_name;
 
     [SerializeField] LeaderboardProcess leaderboardProcess;
-    
-    private void Start()
-    {        
-        CloseButton.onClick.AddListener(Close);    
-    }
-    
-    public void OpenLeaderboard()
+
+    public override void InitButtons()
     {
-        Panel.SetActive(true);
+        CloseButton.onClick.AddListener(_Close);
     }
+
+    public override void InitTexts()
+    {
+       
+    }
+    private void Start()
+    {
+        InitButtons();
+        InitTexts();
+    }
+      
     public void ShowGameScore(int index)
     {
         switch (index)
@@ -65,11 +71,15 @@ public class LeaderboardPanel : BasePanel
         yield return leaderboardProcess.FetchTopHighscoresRoutineOrigin();
     }
 
-    public override void Close()
+    public void _Close()
     {
         DataManager.SetGameState(PrefesKeys.FlappyBird, GameState.close);
         DataManager.SetGameState(PrefesKeys.Dino, GameState.close);
-
-        Panel.SetActive(false);
+        //base.Close();
+        Close();
+    }
+    public override void Close()
+    {
+        base.Close();
     }
 }

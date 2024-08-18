@@ -1,16 +1,17 @@
-using System.Collections.Generic;
-using System.Collections;
-using Helpers;
-using Datas;
 using TMPro;
+using Datas;
+using System;
+using Utils;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using LootLocker.Requests;
+using System.Collections.Generic;
 using LootLocker.Extension.DataTypes;
-using System;
 
 public class MainMenuUI : MonoBehaviour
 {
+    
     [SerializeField] PlayerManager playerManager;
     [SerializeField] LeaderboardProcess leaderboard;
 
@@ -37,7 +38,7 @@ public class MainMenuUI : MonoBehaviour
     public List<GameObject> textObjects_name = new List<GameObject>();
     public List<GameObject> textObjects_score = new List<GameObject>();
     public void GenerateTextField(string value, bool isName)
-    {
+    {        
         GameObject go = Instantiate(textObject_Prefab);
 
         if (isName)
@@ -104,6 +105,7 @@ public class MainMenuUI : MonoBehaviour
     
     public void PlayGame(int index) // FLappy:1, Dino: 2
     {
+        index += GameManager.PreviusGame_Scene_Count;
         m_SceneManager.LoadScene(index);
     }
 }

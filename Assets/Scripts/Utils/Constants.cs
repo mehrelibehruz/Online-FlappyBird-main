@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Helpers
+namespace Utils
 {
     public class Constants
     {
@@ -11,8 +11,14 @@ namespace Helpers
         
         public const string LEADERBOARD_KEY = "myHighScore1";
 
-        public const string Name_Input_Field_PlaceHolder_TEXT = "adınızı daxil edin..";
+        public const string AccountPanel_PlaceHolder_Text = "   adınızı daxil edin..";
         public const string Empty_Name_Message = "Ad mövcud deyil.";
+
+        //Titles:
+        public const string AccountPanel_Title = "Hesab";        
+        public const string SetName_Text = "Təyin Et";
+
+
         public static void Log(string message, bool isActive)
         {
             Debug.Log(message);

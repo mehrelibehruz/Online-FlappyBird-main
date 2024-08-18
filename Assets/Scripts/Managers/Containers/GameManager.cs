@@ -1,6 +1,6 @@
 using TMPro;
 using Datas;
-using Helpers;
+using Utils;
 using UnityEngine;
 using System.Collections;
 using LootLocker.Requests;
@@ -9,6 +9,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public string AppVersion { get; private set; }
+    public const int PreviusGame_Scene_Count = 1;
 
     public LeaderboardProcess leaderboard;
     public static GameManager instance;
