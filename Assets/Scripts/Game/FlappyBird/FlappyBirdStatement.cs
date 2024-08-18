@@ -1,14 +1,14 @@
-using System;
-using System.Collections;
 using Datas;
+using System;
 using Helpers;
 using UnityEngine;
+using System.Collections;
 
 public class FlappyBirdStatement : MonoBehaviour
 {
     [SerializeField] private float gameStartDelay;
     [SerializeField] FlappyUI flappyUI;
-    Leaderboard leaderboard;
+    LeaderboardProcess leaderboard;
 
     int scoreCount = 0;
     private void Awake()

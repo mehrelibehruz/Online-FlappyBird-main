@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Managers;
-using LootLocker.Requests;
+﻿using LootLocker.Requests;
 using System.Collections;
 using UnityEngine;
 
@@ -22,8 +21,7 @@ public class BirdController : MonoBehaviour
     {
         rb.velocity = new Vector2(0, 1 * jumpAmount);
         // rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Force);
-    }
-
+    }    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(Tags.GameOver.ToString()))
@@ -34,6 +32,7 @@ public class BirdController : MonoBehaviour
 
             // levelManager.GameOver();
             // _leaderboard = levelManager.leaderboard;
+            
             flappyBirdStatement.GameOver();           
         }
     }

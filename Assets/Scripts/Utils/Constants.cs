@@ -10,6 +10,8 @@ namespace Helpers
         public const string Dino = "Dino";
         
         public const string LEADERBOARD_KEY = "myHighScore1";
+
+        public const string Name_Input_Field_PlaceHolder_TEXT = "adınızı daxil edin..";
         public static void Log(string message, bool isActive)
         {
             Debug.Log(message);

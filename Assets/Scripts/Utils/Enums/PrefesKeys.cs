@@ -1,10 +1,17 @@
 public enum PrefesKeys
 {
+    PlayerID,
     Dino,
-    FlappyBird, 
+    FlappyBird,
 }
 public enum GameState
 {
     open,
     close
+}
+
+public enum Type
+{
+    Int,
+    String
 }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public string AppVersion { get; private set; }
 
-    public Leaderboard leaderboard;
+    public LeaderboardProcess leaderboard;
     public static GameManager instance;
     public Scenes scenes;
     public Choice choice;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             instance = this;
         AppVersion = "Version: " + Application.version;
-        leaderboard = Object.FindObjectOfType<Leaderboard>();
+        leaderboard = Object.FindObjectOfType<LeaderboardProcess>();
     }  
 
     string leaderboardKey = "myHighScore1";

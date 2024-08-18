@@ -10,7 +10,7 @@ public class LeaderboardPanel : BasePanel
 {
     GameObject leaderBoard_Panel;
     List<TextMeshProUGUI> textObjects_score, textObjects_name;
-    Leaderboard leaderboard;
+    LeaderboardProcess leaderboard;
 
     public void OpenLeaderboard()
     {
@@ -22,14 +22,14 @@ public class LeaderboardPanel : BasePanel
         {
             case 0:
                 StartCoroutine(SetupScore(PrefesKeys.FlappyBird));
-                DataManager.GameState(PrefesKeys.FlappyBird, GameState.open);
+                DataManager.SetGameState(PrefesKeys.FlappyBird, GameState.open);
                 
                 m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
 
             case 1:     
                 StartCoroutine(SetupScore(PrefesKeys.FlappyBird));
-                DataManager.GameState(PrefesKeys.Dino, GameState.open);
+                DataManager.SetGameState(PrefesKeys.Dino, GameState.open);
 
                 m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
@@ -59,8 +59,8 @@ public class LeaderboardPanel : BasePanel
     }  
     public void CloseLeaderboard()
     {   
-        DataManager.GameState(PrefesKeys.FlappyBird, GameState.close);
-        DataManager.GameState(PrefesKeys.Dino, GameState.close);
+        DataManager.SetGameState(PrefesKeys.FlappyBird, GameState.close);
+        DataManager.SetGameState(PrefesKeys.Dino, GameState.close);
 
         leaderBoard_Panel.SetActive(false);
     }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] Leaderboard leaderboard;
+    [SerializeField] LeaderboardProcess leaderboard;
     // public TMP_InputField playerNameInputfield;
 
     private string playerIDKey = "PlayerID";

@@ -11,7 +11,7 @@ using LootLocker.Extension.DataTypes;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;
-    [SerializeField] Leaderboard leaderboard;
+    [SerializeField] LeaderboardProcess leaderboard;
 
     [SerializeField] TextMeshProUGUI appVersionInfo;
 
@@ -59,19 +59,18 @@ public class MainMenuUI : MonoBehaviour
     }
 
     private void Start()
-    {
-        appVersionInfo.text = GameManager.instance.AppVersion;
+    {        
          leaderBoard_Panel.SetActive(false);
 
         Debug.LogError($"Data Flappy: {DataManager.GetScore(PrefesKeys.FlappyBird)}");
         Debug.LogError($"Data Dino: {DataManager.GetScore(PrefesKeys.Dino)}");
 
-        if (PlayerPrefs.GetString("DinoOpen") == "open")
+        if (DataManager.CompareGameState(PrefesKeys.Dino, GameState.open))
         {
             Debug.LogError("DIno");
             leaderBoard_Panel.SetActive(true);            
         }
-        else if (PlayerPrefs.GetString("FlappyOpen") == "open")
+        else if (DataManager.CompareGameState(PrefesKeys.FlappyBird, GameState.open))
         {
             Debug.LogError("FLappy");
             leaderBoard_Panel.SetActive(true);           
