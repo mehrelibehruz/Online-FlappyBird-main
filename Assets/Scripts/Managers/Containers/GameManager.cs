@@ -23,22 +23,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         AppVersion = "Version: " + Application.version;
         leaderboard = Object.FindObjectOfType<Leaderboard>();
-    }
-    // public void SubmitScore()
-    // {
-    //     switch (MainMenuUI.gameIndex)
-    //     {
-    //         case 0:
-    //             //StartCoroutine(SubmitScoreRoutine(DataManager.GetScore(Constants.FlappyBird)));
-    //             Debug.Log(DataManager.GetScore(Constants.FlappyBird));
-    //             break;
-
-    //         case 1:
-    //             //StartCoroutine(SubmitScoreRoutine(DataManager.GetScore(Constants.Dino)));
-    //             Debug.Log(DataManager.GetScore(Constants.Dino));
-    //             break;
-    //     }
-    // }
+    }  
 
     string leaderboardKey = "myHighScore1";
     public IEnumerator SubmitScoreRoutine(int scoreToUpload)
@@ -59,9 +44,5 @@ public class GameManager : MonoBehaviour
             }
         });
         yield return new WaitWhile(() => done == false);
-    }
-    //public string GetAppVersion()
-    //{
-    //    return AppVersion = "Version: " + Application.version;
-    //}
+    }   
 }

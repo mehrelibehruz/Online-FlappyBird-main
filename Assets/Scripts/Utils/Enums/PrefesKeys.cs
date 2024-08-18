@@ -1,5 +1,10 @@
 public enum PrefesKeys
 {
     Dino,
-    FlappyBird
+    FlappyBird, 
+}
+public enum GameState
+{
+    open,
+    close
 }
