@@ -38,6 +38,6 @@ public class FlappyBirdStatement : MonoBehaviour
         scoreCount += 1;
         flappyUI.UpdateScore(scoreCount);
         //GameManager.instance.Score = scoreCount;
-        DataManager.SaveScore(Constants.FlappyBird, scoreCount);
+        DataManager.SaveScore(PrefesKeys.FlappyBird, scoreCount);
     }
 }

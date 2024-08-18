@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 976be1f22034bc34e9be7c3e8a118138
   - enabled: 1
-    path: Assets/Scenes/GameFlappyBird.unity
+    path: Assets/Scenes/Games/GameFlappyBird.unity
     guid: f3452cbc93013cf4fa0113f41348eed2
   - enabled: 1
-    path: Assets/Scenes/GameDino.unity
+    path: Assets/Scenes/Games/GameDino.unity
     guid: 273db83f594c892459a8a0895a207c39
   m_configObjects: {}

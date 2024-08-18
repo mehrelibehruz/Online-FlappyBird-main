@@ -23,8 +23,8 @@ public class DinoStatement : MonoBehaviour
         Debug.Log(scoreCount);
         dionUI.UpdateScore(scoreCount);
 
-        // GameManager.instance.Score = scoreCount;
-        DataManager.SaveScore(Constants.Dino, scoreCount);
+        // GameManager.instance.Score = scoreCount;        
+        DataManager.SaveScore(PrefesKeys.Dino, scoreCount);
     }
     public int GetScore()
     {

@@ -75,34 +75,22 @@ public class MainMenuUI : MonoBehaviour
     private void Start()
     {
         appVersionInfo.text = GameManager.instance.AppVersion;
-        // leaderBoard_Panel.SetActive(false);
+         leaderBoard_Panel.SetActive(false);
 
-        Debug.LogError($"Data Flappy: {DataManager.GetScore(Constants.FlappyBird)}");
-        Debug.LogError($"Data Dino: {DataManager.GetScore(Constants.Dino)}");
+        Debug.LogError($"Data Flappy: {DataManager.GetScore(PrefesKeys.FlappyBird)}");
+        Debug.LogError($"Data Dino: {DataManager.GetScore(PrefesKeys.Dino)}");
 
         if (PlayerPrefs.GetString("DinoOpen") == "open")
         {
             Debug.LogError("DIno");
-            leaderBoard_Panel.SetActive(true);
-            // btn_image[0].color = new Color(0, btn_image[0].color.g, btn_image[0].color.b);
-            // btn_image[1].color = new Color(255, btn_image[1].color.g, btn_image[1].color.b);
+            leaderBoard_Panel.SetActive(true);            
         }
         else if (PlayerPrefs.GetString("FlappyOpen") == "open")
         {
             Debug.LogError("FLappy");
-            leaderBoard_Panel.SetActive(true);
-            // btn_image[0].color = new Color(255, btn_image[0].color.g, btn_image[0].color.b);
-            // btn_image[1].color = new Color(0, btn_image[1].color.g, btn_image[1].color.b);
-        }
-
-        // int rs = DataManager.GetScore(Constants.FlappyBird);
-        // Debug.LogError(rs);
-    }
-    // void ChangeColor_Temp(int index, int color)
-    // {
-    //     btn_image[index].color = new Color(color, btn_image[0].color.g, btn_image[0].color.b);
-    //     btn_image[index].color = new Color(color, btn_image[1].color.g, btn_image[1].color.b);
-    // }
+            leaderBoard_Panel.SetActive(true);           
+        }     
+    }    
 
     #region Comments 1
     // private void Awake()
@@ -236,7 +224,7 @@ public class MainMenuUI : MonoBehaviour
                 // btn_image[0].color = new Color(255, btn_image[0].color.g, btn_image[0].color.b);
                 // btn_image[1].color = new Color(0, btn_image[1].color.g, btn_image[1].color.b);
 
-                StartCoroutine(SetupScore(Constants.FlappyBird));
+                StartCoroutine(SetupScore(PrefesKeys.FlappyBird));
                 PlayerPrefs.SetString("FlappyOpen", "open");
                 m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
@@ -250,7 +238,7 @@ public class MainMenuUI : MonoBehaviour
                 // btn_image[0].color = new Color(0, btn_image[0].color.g, btn_image[0].color.b);
                 // btn_image[1].color = new Color(255, btn_image[1].color.g, btn_image[1].color.b);
 
-                StartCoroutine(SetupScore(Constants.Dino));
+                StartCoroutine(SetupScore(PrefesKeys.FlappyBird));
                 PlayerPrefs.SetString("DinoOpen", "open");
                 m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
@@ -288,7 +276,7 @@ public class MainMenuUI : MonoBehaviour
     #endregion
 
     #region  Old Score 2
-    IEnumerator SetupScore(string gameName)
+    IEnumerator SetupScore(PrefesKeys gameName)
     {
         // content_Panel.SetActive(false);
         yield return StartCoroutine(GameManager.instance.SubmitScoreRoutine(DataManager.GetScore(gameName)));

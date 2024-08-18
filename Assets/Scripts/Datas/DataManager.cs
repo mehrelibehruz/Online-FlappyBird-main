@@ -17,7 +17,7 @@ namespace Datas
         //     bool check = playerID == PlayerManager.leaderBoardMembers[index].player.id.ToString();
         //     return check;
         // }
-
+        #region Old
         public static void SaveScore(string gameName, int score)
         {
             if (score >= GetScore(gameName)){
@@ -30,7 +30,21 @@ namespace Datas
         {
             return PlayerPrefs.GetInt(gameName);
         }
+        #endregion
 
+        #region New
+        public static void SaveScore(PrefesKeys prefesKey, int score)
+        {
+            if (score >= GetScore(prefesKey))
+            {
+                PlayerPrefs.SetInt(prefesKey.ToString(), score);
+            }
+        }
+        public static int GetScore(PrefesKeys prefesKey)
+        {
+            return PlayerPrefs.GetInt(prefesKey.ToString());
+        }
+        #endregion
         // public static List<string> gameList = new List<string>();
         // public static bool GetGame(string gameName)
         // {

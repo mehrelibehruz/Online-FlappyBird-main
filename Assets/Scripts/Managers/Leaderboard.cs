@@ -79,36 +79,21 @@ public class Leaderboard : MonoBehaviour
                     if (members[i].player.name != "")
                     {
                         tempPlayerNames += members[i].player.name;
-                        // Debug.LogError(PlayerPrefs.GetString(playerID));
-                        // Debug.LogError(members[i].player.id);                        
+                                            
                         mainMenuUI.GenerateTextField(tempPlayerNames, true);
-                        // if (playerID == members[i].player.id.ToString())
-                        // {
-                        //     mainMenuUI.ShowCurrentUser(members, i);
-                        // }
-
-                        // // tempPlayerNames += "*";
-                        // else { Debug.LogError("Does not equal"); }
-                        // tempPlayerNames = "";
+                        
                     }
                     else
                     {
-                        // tempPlayerNames += members[i].player.id;
+                       
                         tempPlayerNames += "Ad mövcud deyil.";
                         mainMenuUI.GenerateTextField(tempPlayerNames, true);
-                        // Debug.LogError(PlayerPrefs.GetString(playerID));
-                        // tempPlayerNames = "";
-                        // if (playerID == members[i].player.id.ToString())
-                        // {
-                        //     mainMenuUI.ShowCurrentUser(members, i);
-                        // }
+                       
                     }
                     if (playerID == members[i].player.id.ToString())
                     {
-                        mainMenuUI.ShowCurrentUser(members, i);
-                        // members[i].score = DataManager.GetScore(Constants.Dino); // Ekranda deyisdirmek
-                    }
-                    // members[i].score = 0;
+                        mainMenuUI.ShowCurrentUser(members, i);                       
+                    }              
                     tempPlayerScores += members[i].score; // + "\n";
                     mainMenuUI.GenerateTextField(tempPlayerScores, false);
                     tempPlayerScores = "";
