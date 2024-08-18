@@ -5,42 +5,49 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
+using UnityEngine.SocialPlatforms;
 
 public class LeaderboardPanel : BasePanel
-{
-    GameObject leaderBoard_Panel;
+{   
     List<TextMeshProUGUI> textObjects_score, textObjects_name;
-    LeaderboardProcess leaderboard;
 
+    [SerializeField] LeaderboardProcess leaderboardProcess;
+    
+    private void Start()
+    {        
+        CloseButton.onClick.AddListener(Close);    
+    }
+    
     public void OpenLeaderboard()
     {
-        leaderBoard_Panel.SetActive(true);
+        Panel.SetActive(true);
     }
     public void ShowGameScore(int index)
-    {        
+    {
         switch (index)
         {
             case 0:
                 StartCoroutine(SetupScore(PrefesKeys.FlappyBird));
                 DataManager.SetGameState(PrefesKeys.FlappyBird, GameState.open);
-                
+
                 m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
 
-            case 1:     
+            case 1:
                 StartCoroutine(SetupScore(PrefesKeys.FlappyBird));
                 DataManager.SetGameState(PrefesKeys.Dino, GameState.open);
 
                 m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
         }
-    }      
+    }
     IEnumerator SetupScore(PrefesKeys gameName)
     {
         yield return StartCoroutine(GameManager.instance.SubmitScoreRoutine(DataManager.GetScore(gameName)));
-     
+
         yield return new WaitForSeconds(0.3f);
-     
+
         foreach (var go in textObjects_name)
         {
             Destroy(go);
@@ -55,13 +62,14 @@ public class LeaderboardPanel : BasePanel
 
         yield return new WaitForSeconds(0.4f);
 
-        yield return leaderboard.FetchTopHighscoresRoutineOrigin();
-    }  
-    public void CloseLeaderboard()
-    {   
+        yield return leaderboardProcess.FetchTopHighscoresRoutineOrigin();
+    }
+
+    public override void Close()
+    {
         DataManager.SetGameState(PrefesKeys.FlappyBird, GameState.close);
         DataManager.SetGameState(PrefesKeys.Dino, GameState.close);
 
-        leaderBoard_Panel.SetActive(false);
+        Panel.SetActive(false);
     }
 }

@@ -1,10 +1,11 @@
-using UnityEngine;
 using TMPro;
-using Helpers;
-using System.Collections.Generic;
-using LootLocker.Requests;
-using System.Collections;
 using Datas;
+using Helpers;
+using UnityEngine;
+using System.Collections;
+using LootLocker.Requests;
+using System.Collections.Generic;
+
 public class GameManager : MonoBehaviour
 {
     public string AppVersion { get; private set; }
@@ -29,7 +30,9 @@ public class GameManager : MonoBehaviour
     public IEnumerator SubmitScoreRoutine(int scoreToUpload)
     {
         bool done = false;
-        string playerID = PlayerPrefs.GetString("PlayerID");
+        //string playerID = PlayerPrefs.GetString("PlayerID");
+        string playerID = DataManager.GetData(PrefesKeys.PlayerID);
+
         LootLockerSDKManager.SubmitScore(playerID, scoreToUpload, leaderboardKey, (response) => // add toString()
         {
             if (response.success)

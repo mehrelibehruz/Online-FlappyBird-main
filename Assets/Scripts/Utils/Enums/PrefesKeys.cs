@@ -1,9 +1,11 @@
 public enum PrefesKeys
 {
     PlayerID,
+    PlayerName,
     Dino,
     FlappyBird,
 }
+
 public enum GameState
 {
     open,

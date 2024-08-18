@@ -1,3 +1,4 @@
+using Datas;
 using UnityEngine;
 
 public class SessionManager : MonoBehaviour
@@ -6,8 +7,8 @@ public class SessionManager : MonoBehaviour
 
     public static string PlayerID
     {
-        get { return PlayerPrefs.GetString(PlayerIDKey); }
-        private set { PlayerPrefs.SetString(PlayerIDKey, value); }
+        get { return DataManager.GetData(PrefesKeys.PlayerID); }
+        private set { PlayerPrefs.SetString(PlayerIDKey, value);}      
     }
 
     public static bool IsLoggedIn
@@ -16,12 +17,10 @@ public class SessionManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        // Oyun başladığında oturum durumu kontrol edilir
+    {       
         if (IsLoggedIn)
         {
             Debug.Log("Login success, entering point starting...");
-            // Oturum açıksa ve geçerliyse (örneğin, PlayerPrefs'te bir PlayerID varsa), oturum otomatik olarak başlatılır
             StartSession(PlayerID);
         }
         else

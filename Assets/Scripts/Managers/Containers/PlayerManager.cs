@@ -1,65 +1,43 @@
-using LootLocker.Requests;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using System.Collections;
+using LootLocker.Requests;
+using System.Collections.Generic;
+using UnityEngine.SocialPlatforms.Impl;
+using Datas;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] LeaderboardProcess leaderboard;
-    // public TMP_InputField playerNameInputfield;
 
-    private string playerIDKey = "PlayerID";
-    // [SerializeField] MainMenuUI mainMenuUI;
+    // TODO: Transform to PlayerData.cs  
+    public static LootLockerLeaderboardMember[] leaderBoardMembers;   
 
-    // public List<LootLockerLeaderboardMember> leaderBoardMembers = new List<LootLockerLeaderboardMember>();
-    public static LootLockerLeaderboardMember[] leaderBoardMembers; // TODO: Transform to PlayerData.cs
-    [SerializeField] MainMenuUI mainMenuUI;
     void Start()
     {
-        StartCoroutine(SetupRoutine());
-
-        //string playerID = PlayerPrefs.GetString(playerIDKey);
-
-        // if (!string.IsNullOrEmpty(playerID))
-        // {
-        //     Debug.Log("Player id: " + playerID);
-        //     // TODO: Special font
-        //     // mainMenuUI.ShowCurrentUser(playerID);
-        //     Debug.Log("Salam" + playerID + " " + playerIDKey);
-        // }
-        // else
-        // {
-        //     Debug.Log("Player is not found.");
-        //     // TODO: Special error
-        // }
+        StartCoroutine(SetupRoutine());     
     }
 
-    public void ChangeName()
+    public void SetName(string name)
     {
-        // accountPanel.SetActive(true);
-        // oldName.text = leaderboard.playerNames.text;
+        SetPlayerName(name);
     }
-    public string TempPlayerName;
-    public void SetPlayerName(string playerName)
+    
+    private void SetPlayerName(string playerName)
     {
         LootLockerSDKManager.SetPlayerName(playerName, (response) =>
         {
             if (response.success)
             {
-                // TempPlayerName = playerNameInputfield.text;
-                // PlayerPrefs.SetString("PlayerName", TempPlayerName);
+                DataManager.SetData(PrefesKeys.PlayerName, playerName, Type.String);
                 Debug.LogError("Succesfully set player name");
             }
             else
             {
                 Debug.Log("Could not set player name" + response.errorData);
             }
-        });
-        // playerNameInputfield.gameObject.SetActive(false); // Go to GameManager
-        // changeName.gameObject.SetActive(true);
+        });        
     }
 
     IEnumerator SetupRoutine()

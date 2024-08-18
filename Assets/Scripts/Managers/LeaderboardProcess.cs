@@ -25,14 +25,15 @@ public class LeaderboardProcess : MonoBehaviour
     private void Start()
     {
         //playerID = PlayerPrefs.GetString("PlayerID");
-        playerID = DataManager.GetPrefes(PrefesKeys.PlayerID, Type.String);
+        playerID = DataManager.GetData(PrefesKeys.PlayerID, Type.String);
     }
 
     public IEnumerator FetchTopHighscoresRoutineOrigin()
     {
         bool done = false;
-        string playerID = PlayerPrefs.GetString("PlayerID");
-        LootLockerSDKManager.GetScoreList(leaderboardKey, scoreListCount, 0, (response) => // GetScore list
+        //string playerID = PlayerPrefs.GetString("PlayerID");
+        string playerID = DataManager.GetData(PrefesKeys.PlayerID);
+        LootLockerSDKManager.GetScoreList(leaderboardKey, scoreListCount, 0, (response) =>
         {
             if (response.success)
             {
@@ -48,16 +49,12 @@ public class LeaderboardProcess : MonoBehaviour
                     if (members[i].player.name != "")
                     {
                         tempPlayerNames += members[i].player.name;
-
                         mainMenuUI.GenerateTextField(tempPlayerNames, true);
-
                     }
                     else
                     {
-
-                        tempPlayerNames += "Ad mövcud deyil.";
+                        tempPlayerNames += Constants.Empty_Name_Message;
                         mainMenuUI.GenerateTextField(tempPlayerNames, true);
-
                     }
                     if (playerID == members[i].player.id.ToString())
                     {
@@ -69,7 +66,6 @@ public class LeaderboardProcess : MonoBehaviour
                     tempPlayerNames = "";
                 }
                 done = true;
-
             }
             else
             {

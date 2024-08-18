@@ -1,6 +1,7 @@
 using TMPro;
+using UnityEngine;
 
-public class AccountPanel : BasePanel
+public class AccountPanel : MonoBehaviour //BasePanel
 {
     public void OpenAccountPanel()
     {
@@ -16,5 +17,5 @@ public class AccountPanel : BasePanel
     public void CloseAccountPanel()
     {
         //account_Panel.SetActive(false);
-    }
+    } 
 }

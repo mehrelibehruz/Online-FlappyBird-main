@@ -16,25 +16,38 @@ namespace Datas
             return PlayerPrefs.GetInt(prefesKey.ToString());
         }
 
+
         /// <summary>
         /// 1- key, 2- string or int
         /// </summary>
         /// <param name="prefesKey"></param>
         /// <param name="valueType"></param>
         /// <returns></returns>
-        public static string GetPrefes(PrefesKeys prefesKey, Type valueType = Type.String)
+        public static string GetData(PrefesKeys prefesKey, Type valueType = Type.String)
         {
-            dynamic returnValue;
+            var returnValue = string.Empty;
             if (valueType == Type.String)
             {
                 returnValue = PlayerPrefs.GetString(prefesKey.ToString());
             }
+            else if (valueType == Type.Int)
+            {
+                returnValue = PlayerPrefs.GetInt(prefesKey.ToString()).ToString(); //ConvertType(returnValue);
+            }
             else
             {
-                returnValue = PlayerPrefs.GetInt(prefesKey.ToString()).ToString();
+                returnValue = "Invalid type";
             }
             return returnValue;
         }
+        public static void SetData(PrefesKeys prefesKey, object value, Type valueType)
+        {
+            if (valueType == Type.String) { PlayerPrefs.SetString(prefesKey.ToString(), value.ToString()); }
+            else if (valueType == Type.Int) { PlayerPrefs.SetInt(prefesKey.ToString(), System.Convert.ToInt32(value)); }
+            else { Debug.LogWarning($"Just problem. value type: {valueType}, value: {value}"); }
+        }
+
+        //static int ConvertInt(string value) { return System.Convert.ToInt32(value); }
 
         public static void SetGameState(PrefesKeys gameName, GameState state)
         {
