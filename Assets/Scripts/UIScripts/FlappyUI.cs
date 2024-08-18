@@ -57,10 +57,10 @@ public class FlappyUI : MonoBehaviour /*UIManager*/
             case Choice.Pause:
                 break;
             case Choice.Restart:
-                SceneLoader.LoadScene(Scenes.GameFlappyBird);
+                m_SceneManager.LoadScene(Scenes.GameFlappyBird);
                 break;
             case Choice.Back:
-                SceneLoader.LoadScene(Scenes.MainMenu);
+                m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
             case Choice.Quit:
                 Application.Quit();

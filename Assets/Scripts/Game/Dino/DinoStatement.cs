@@ -26,4 +26,8 @@ public class DinoStatement : MonoBehaviour
         // GameManager.instance.Score = scoreCount;
         DataManager.SaveScore(Constants.Dino, scoreCount);
     }
+    public int GetScore()
+    {
+        return scoreCount;
+    }
 }

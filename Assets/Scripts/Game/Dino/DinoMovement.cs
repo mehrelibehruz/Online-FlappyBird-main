@@ -6,6 +6,7 @@ public class DinoMovement : MonoBehaviour
     [SerializeField] float jumpPower = 8f;
 
     [SerializeField] DinoStatement dinoStatement;
+    [SerializeField] Animator animator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,14 +19,19 @@ public class DinoMovement : MonoBehaviour
         }        
     }
     string barrier = "DinoBarrier";
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.CompareTag(barrier)){
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag(barrier))
+        {
             dinoStatement.GameOver();
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("ScoreArea")){
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("ScoreArea"))
+        {
             dinoStatement.UpdateScore();
         }
     }
+
 }

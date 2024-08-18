@@ -115,8 +115,7 @@ public class Leaderboard : MonoBehaviour
                     tempPlayerNames = "";
                 }
                 done = true;
-                // playerNames.text = tempPlayerNames;
-                // playerScores.text = tempPlayerScores;
+       
             }
             else
             {

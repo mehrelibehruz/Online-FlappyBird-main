@@ -48,10 +48,10 @@ public class DionUI : MonoBehaviour
             case Choice.Pause:
                 break;
             case Choice.Restart:
-                SceneLoader.LoadScene(Scenes.GameDino);
+                m_SceneManager.LoadScene(Scenes.GameDino);
                 break;
             case Choice.Back:
-                SceneLoader.LoadScene(Scenes.MainMenu);
+                m_SceneManager.LoadScene(Scenes.MainMenu);
                 break;
             case Choice.Quit:
                 Application.Quit();

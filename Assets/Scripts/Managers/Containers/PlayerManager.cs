@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] Leaderboard leaderboard;
-    public TMP_InputField playerNameInputfield;
+    // public TMP_InputField playerNameInputfield;
 
     private string playerIDKey = "PlayerID";
     // [SerializeField] MainMenuUI mainMenuUI;
@@ -43,15 +43,15 @@ public class PlayerManager : MonoBehaviour
         // oldName.text = leaderboard.playerNames.text;
     }
     public string TempPlayerName;
-    public void SetPlayerName()
+    public void SetPlayerName(string playerName)
     {
-        LootLockerSDKManager.SetPlayerName(playerNameInputfield.text, (response) =>
+        LootLockerSDKManager.SetPlayerName(playerName, (response) =>
         {
             if (response.success)
             {
                 // TempPlayerName = playerNameInputfield.text;
                 // PlayerPrefs.SetString("PlayerName", TempPlayerName);
-                Debug.Log("Succesfully set player name");
+                Debug.LogError("Succesfully set player name");
             }
             else
             {

@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using Datas;
 using Helpers;
-using LootLocker.Extension.DataTypes;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class FlappyBirdStatement : MonoBehaviour
