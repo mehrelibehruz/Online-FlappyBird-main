@@ -7,37 +7,41 @@ using System.Collections.Generic;
 using UnityEngine.SocialPlatforms.Impl;
 using Datas;
 
-public class PlayerManager : MonoBehaviour
+public class UserManager : MonoBehaviour
 {
     [SerializeField] LeaderboardProcess leaderboard;
 
     // TODO: Transform to PlayerData.cs  
-    public static LootLockerLeaderboardMember[] leaderBoardMembers;   
+    public static LootLockerLeaderboardMember[] leaderBoardMembers;
 
     void Start()
     {
-        StartCoroutine(SetupRoutine());     
+        StartCoroutine(SetupRoutine());
     }
 
     public void SetName(string name)
     {
         SetPlayerName(name);
     }
-    
+
     private void SetPlayerName(string playerName)
     {
-        LootLockerSDKManager.SetPlayerName(playerName, (response) =>
+        if (!string.IsNullOrEmpty(playerName))
         {
-            if (response.success)
+            LootLockerSDKManager.SetPlayerName(playerName, (response) =>
             {
-                DataManager.SetData(PrefesKeys.PlayerName, playerName, Type.String);
-                Debug.LogError("Succesfully set player name");
-            }
-            else
-            {
-                Debug.Log("Could not set player name" + response.errorData);
-            }
-        });        
+                if (response.success)
+                {
+                    DataManager.SetData(PrefesKeys.PlayerName, playerName, Type.String);
+                    Debug.LogError("Succesfully set player name");
+                }
+                else
+                {
+                    Debug.Log("Could not set player name" + response.errorData);
+                }
+            });
+        }
+     
     }
 
     IEnumerator SetupRoutine()

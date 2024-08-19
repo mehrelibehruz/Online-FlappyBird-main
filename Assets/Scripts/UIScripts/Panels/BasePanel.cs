@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class BasePanel : MonoBehaviour
+public abstract class BasePanel : BaseUI, I_UI
 {
     public string PanelName { get; set; }
     public int PanelID { get; set; }
@@ -13,12 +13,20 @@ public abstract class BasePanel : MonoBehaviour
     //[SerializeField] public Component ProcessClass;
 
     [SerializeField] public Button CloseButton;
-
-    public abstract void InitButtons();
-    public abstract void InitTexts();
+ 
 
     public virtual void Close()
     {
         Panel.SetActive(false);
+    }
+
+    public virtual void InitButtons()
+    {
+        
+    }
+
+    public virtual void InitTexts()
+    {
+        
     }
 }

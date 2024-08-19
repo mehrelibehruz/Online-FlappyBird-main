@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GamesPanel : BasePanel
 {
     public List<Button> games;
-    [SerializeField] MainMenuUI mainMenuUI;
+    [SerializeField] MainMenuUI mainMenuUI = MainMenuUI.instance;
 
     public override void InitButtons()
     {

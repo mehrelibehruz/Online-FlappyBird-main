@@ -15,8 +15,8 @@ public class LeaderboardProcess : MonoBehaviour
     public TextMeshProUGUI playerNames;
     public TextMeshProUGUI playerScores;
 
-    [SerializeField] MainMenuUI mainMenuUI;
-    [SerializeField] PlayerManager playerManager;
+    [SerializeField] MainMenuUI mainMenuUI = MainMenuUI.instance;
+    [SerializeField] UserManager playerManager;
     public bool originSolution;
 
     private string playerID;
@@ -41,7 +41,7 @@ public class LeaderboardProcess : MonoBehaviour
                 string tempPlayerScores = "";
 
                 LootLockerLeaderboardMember[] members = response.items;
-                PlayerManager.leaderBoardMembers = response.items;
+                UserManager.leaderBoardMembers = response.items;
 
                 for (int i = 0; i < members.Length; i++) // 3. membersin uzunlugu qeder massiv icinde dovr edirik.
                 {

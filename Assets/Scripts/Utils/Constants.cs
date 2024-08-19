@@ -12,6 +12,7 @@ namespace Utils
         public const string LEADERBOARD_KEY = "myHighScore1";
 
         public const string AccountPanel_PlaceHolder_Text = "   adınızı daxil edin..";
+        public const string AccountPanel_WarningMessage_Text = "ad boş ola bilməz..";        
         public const string Empty_Name_Message = "Ad mövcud deyil.";
 
         //Titles:

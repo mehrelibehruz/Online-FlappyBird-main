@@ -9,10 +9,21 @@ using LootLocker.Requests;
 using System.Collections.Generic;
 using LootLocker.Extension.DataTypes;
 
-public class MainMenuUI : MonoBehaviour
+public class MainMenuUI : BaseUI
 {
-    
-    [SerializeField] PlayerManager playerManager;
+    public static MainMenuUI instance;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    [SerializeField] UserManager playerManager;
     [SerializeField] LeaderboardProcess leaderboard;
 
     [SerializeField] TextMeshProUGUI appVersionInfo;
@@ -38,7 +49,7 @@ public class MainMenuUI : MonoBehaviour
     public List<GameObject> textObjects_name = new List<GameObject>();
     public List<GameObject> textObjects_score = new List<GameObject>();
     public void GenerateTextField(string value, bool isName)
-    {        
+    {
         GameObject go = Instantiate(textObject_Prefab);
 
         if (isName)
@@ -95,14 +106,14 @@ public class MainMenuUI : MonoBehaviour
 
     public void ShowCurrentUser(LootLockerLeaderboardMember[] members, int i)
     {
-        if (PlayerManager.leaderBoardMembers[i].player.id == members[i].player.id)
+        if (UserManager.leaderBoardMembers[i].player.id == members[i].player.id)
         {
             Debug.LogError("Correct id");
             textObjects_name[i].GetComponent<TextMeshProUGUI>().color = new Color(255, 0, 0); // red
         }
         // Debug.LogError(textObjectsElements.Equals(name));
     }
-    
+
     public void PlayGame(int index) // FLappy:1, Dino: 2
     {
         index += GameManager.PreviusGame_Scene_Count;

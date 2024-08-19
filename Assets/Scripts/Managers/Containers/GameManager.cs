@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public string AppVersion { get; private set; }
     public const int PreviusGame_Scene_Count = 1;
+    public UserManager userManager;
 
     public LeaderboardProcess leaderboard;
     public static GameManager instance;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         AppVersion = "Version: " + Application.version;
         leaderboard = Object.FindObjectOfType<LeaderboardProcess>();
+        userManager = Object.FindObjectOfType<UserManager>();
     }  
 
     string leaderboardKey = "myHighScore1";
