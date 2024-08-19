@@ -1,14 +1,14 @@
 using Datas;
 using UnityEngine;
 
-public class SessionManager : MonoBehaviour
+public class SessionManagerService : MonoBehaviour
 {
     private const string PlayerIDKey = "PlayerID";
 
     public static string PlayerID
     {
         get { return DataManager.GetData(PrefesKeys.PlayerID); }
-        private set { PlayerPrefs.SetString(PlayerIDKey, value);}      
+        private set { DataManager.SetData(PrefesKeys.PlayerID, value, Type.String);}      
     }
 
     public static bool IsLoggedIn
@@ -32,12 +32,13 @@ public class SessionManager : MonoBehaviour
     public static void StartSession(string playerID)
     {
         PlayerID = playerID;
-        Debug.Log("Oturum başlatildi. Oyuncu ID: " + playerID);
+        Debug.Log("Logged in. Player ID: " + playerID);
+        Debug.Log("Player Name: " + DataManager.GetData(PrefesKeys.PlayerName, Type.String));
     }
 
     public static void EndSession()
     {
         PlayerID = string.Empty;
-        Debug.Log("Oturum sonlandirildi.");
+        Debug.Log("Log out.");
     }
 }

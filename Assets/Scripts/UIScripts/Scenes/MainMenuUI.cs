@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using System.Collections;
 using LootLocker.Requests;
 using System.Collections.Generic;
-using LootLocker.Extension.DataTypes;
 
 public class MainMenuUI : BaseUI
 {
@@ -23,8 +22,8 @@ public class MainMenuUI : BaseUI
             Destroy(gameObject);
         }
     }
-    [SerializeField] UserManager playerManager;
-    [SerializeField] LeaderboardProcess leaderboard;
+    [SerializeField] UserManagerService playerManager;
+    [SerializeField] LeaderboardProcessService leaderboard;
 
     [SerializeField] TextMeshProUGUI appVersionInfo;
     [SerializeField] Button PlayButton;
@@ -106,7 +105,7 @@ public class MainMenuUI : BaseUI
 
     public void ShowCurrentUser(LootLockerLeaderboardMember[] members, int i)
     {
-        if (UserManager.leaderBoardMembers[i].player.id == members[i].player.id)
+        if (UserManagerService.leaderBoardMembers[i].player.id == members[i].player.id)
         {
             Debug.LogError("Correct id");
             textObjects_name[i].GetComponent<TextMeshProUGUI>().color = new Color(255, 0, 0); // red

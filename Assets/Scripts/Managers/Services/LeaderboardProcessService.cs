@@ -7,7 +7,7 @@ using System.Linq;
 using Datas;
 using Utils;
 
-public class LeaderboardProcess : MonoBehaviour
+public class LeaderboardProcessService : MonoBehaviour
 {
     //int leaderboardKey = 18872;
     string leaderboardKey = "myHighScore1";
@@ -16,7 +16,7 @@ public class LeaderboardProcess : MonoBehaviour
     public TextMeshProUGUI playerScores;
 
     [SerializeField] MainMenuUI mainMenuUI = MainMenuUI.instance;
-    [SerializeField] UserManager playerManager;
+    [SerializeField] UserManagerService playerManager;
     public bool originSolution;
 
     private string playerID;
@@ -33,18 +33,20 @@ public class LeaderboardProcess : MonoBehaviour
         bool done = false;
         //string playerID = PlayerPrefs.GetString("PlayerID");
         string playerID = DataManager.GetData(PrefesKeys.PlayerID);
-        LootLockerSDKManager.GetScoreList(leaderboardKey, scoreListCount, 0, (response) =>
+        LootLockerSDKManager.GetScoreList(leaderboardKey, scoreListCount, 0, (response) =>        
         {
             if (response.success)
-            {
+            {                
                 string tempPlayerNames = ""; // 1. Ugurlu oldugu halda adlari tutacaq muveqqeti bir string deyisen yaradilir.
                 string tempPlayerScores = "";
 
                 LootLockerLeaderboardMember[] members = response.items;
-                UserManager.leaderBoardMembers = response.items;
+                UserManagerService.leaderBoardMembers = response.items;
 
                 for (int i = 0; i < members.Length; i++) // 3. membersin uzunlugu qeder massiv icinde dovr edirik.
                 {
+                    Debug.LogError(members[i].player.name);
+
                     tempPlayerNames += members[i].rank + ". ";
                     if (members[i].player.name != "")
                     {

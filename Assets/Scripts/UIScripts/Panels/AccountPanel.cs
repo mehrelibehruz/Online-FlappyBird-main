@@ -8,13 +8,13 @@ public class AccountPanel : BasePanel
 {
     [SerializeField] Button SetNameButton;
     [SerializeField] TextMeshProUGUI PlaceHolder_Text;
-    [SerializeField] TextMeshProUGUI WarningMessage_Text;
+    [SerializeField] TextMeshProUGUI WarningMessage_Text;    
     [SerializeField] TMP_InputField SetNameInputField;
     [SerializeField] int CharacterLimit;
     private string UserName;
     public override void InitButtons()
     {
-        SetNameButton.onClick.AddListener(SetName);
+        SetNameButton.onClick.AddListener(OnClickSetName);
         CloseButton.onClick.AddListener(Close);
     }
 
@@ -35,7 +35,8 @@ public class AccountPanel : BasePanel
         InitButtons();
         InitTexts();
         WarningMessage_Text.gameObject.SetActive(false);
-        InitInputFields();        
+        InitInputFields();
+        FEATURE_TEST_Text.text = GameManager.instance.FirstTime;
     }
 
     public void OpenAccountPanel()
@@ -48,8 +49,14 @@ public class AccountPanel : BasePanel
         UserName = inputText;      
     }
 
-    private void SetName()
+    private void OnClickSetName()
     {
+        if(string.IsNullOrEmpty(UserName) || string.IsNullOrWhiteSpace(UserName))
+        {
+            WarningMessage_Text.gameObject.SetActive(true);
+            return;
+        }
+        print("check continue");
         GameManager.instance.userManager.SetName(UserName);
     }
 

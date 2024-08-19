@@ -8,7 +8,7 @@ public class FlappyBirdStatement : MonoBehaviour
 {
     [SerializeField] private float gameStartDelay;
     [SerializeField] FlappyUI flappyUI;
-    LeaderboardProcess leaderboard;
+    LeaderboardProcessService leaderboard;
 
     int scoreCount = 0;
     private void Awake()

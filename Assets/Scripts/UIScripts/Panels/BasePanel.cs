@@ -8,6 +8,7 @@ public abstract class BasePanel : BaseUI, I_UI
     public int PanelID { get; set; }
     public bool IsPanelSpecificScene { get; set; }
     [SerializeField] public TextMeshProUGUI Title;
+    [SerializeField] public TextMeshProUGUI FEATURE_TEST_Text;
 
     [SerializeField] public GameObject Panel;
     //[SerializeField] public Component ProcessClass;

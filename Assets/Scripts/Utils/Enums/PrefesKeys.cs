@@ -7,7 +7,7 @@ public enum PrefesKeys
 }
 
 public enum GameState
-{
+{    
     open,
     close
 }
@@ -16,4 +16,8 @@ public enum Type
 {
     Int,
     String
+}
+public enum ApplicationState
+{
+    openingCount
 }

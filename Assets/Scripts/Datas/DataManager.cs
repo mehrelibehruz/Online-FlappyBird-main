@@ -64,5 +64,18 @@ namespace Datas
         {
             return PlayerPrefs.GetString(gameName.ToString()) == state.ToString() ? true : false;
         }
+        public static bool CompareGameState(ApplicationState applicationState, int count = 0)
+        {
+            return PlayerPrefs.GetInt(applicationState.ToString()) == count ? true : false;
+        }
+
+        public static void SetState_Application(ApplicationState applicationState, int value)
+        {
+            PlayerPrefs.SetInt(applicationState.ToString(), value);
+        }
+        public static int GetState_Application(ApplicationState applicationState)
+        {
+            return PlayerPrefs.GetInt(applicationState.ToString());
+        }
     }
 }

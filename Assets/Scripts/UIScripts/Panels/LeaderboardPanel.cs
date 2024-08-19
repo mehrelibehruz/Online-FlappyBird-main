@@ -12,7 +12,7 @@ public class LeaderboardPanel : BasePanel
 {   
     List<TextMeshProUGUI> textObjects_score, textObjects_name;
 
-    [SerializeField] LeaderboardProcess leaderboardProcess;
+    [SerializeField] LeaderboardProcessService leaderboardProcess;
 
     public override void InitButtons()
     {

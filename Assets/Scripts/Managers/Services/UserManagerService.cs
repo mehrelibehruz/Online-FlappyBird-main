@@ -6,10 +6,11 @@ using LootLocker.Requests;
 using System.Collections.Generic;
 using UnityEngine.SocialPlatforms.Impl;
 using Datas;
+using Utils;
 
-public class UserManager : MonoBehaviour
+public class UserManagerService : MonoBehaviour
 {
-    [SerializeField] LeaderboardProcess leaderboard;
+    [SerializeField] LeaderboardProcessService leaderboard;
 
     // TODO: Transform to PlayerData.cs  
     public static LootLockerLeaderboardMember[] leaderBoardMembers;
@@ -26,7 +27,7 @@ public class UserManager : MonoBehaviour
 
     private void SetPlayerName(string playerName)
     {
-        if (!string.IsNullOrEmpty(playerName))
+        if (/*!string.IsNullOrEmpty(playerName) &&*/!CheckUserSameName(playerName))
         {
             LootLockerSDKManager.SetPlayerName(playerName, (response) =>
             {
@@ -41,7 +42,7 @@ public class UserManager : MonoBehaviour
                 }
             });
         }
-     
+
     }
 
     IEnumerator SetupRoutine()
@@ -69,5 +70,30 @@ public class UserManager : MonoBehaviour
             }
         });
         yield return new WaitWhile(() => done == false);
+    }
+
+
+    public bool CheckUserSameName(string newPlayerName)
+    {
+        string playerID = DataManager.GetData(PrefesKeys.PlayerID);
+
+        LootLockerLeaderboardMember[] members = leaderBoardMembers;
+
+        for (int i = 0; i < members.Length; i++)
+        {
+            //members[x].player.name = "";            
+            if (newPlayerName == members[i].player.name)
+            {
+                Debug.LogWarning($"Same Name. index:{members[i].player.name}");                
+                return true;
+            }
+            Debug.LogWarning(members[i].player.name);
+
+            if (playerID == members[i].player.id.ToString())
+            {
+            }
+
+        }
+        return false;
     }
 }
