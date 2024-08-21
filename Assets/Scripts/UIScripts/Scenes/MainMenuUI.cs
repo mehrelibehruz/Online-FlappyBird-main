@@ -13,7 +13,7 @@ public class MainMenuUI : BaseUI
     public static MainMenuUI instance;
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -44,6 +44,8 @@ public class MainMenuUI : BaseUI
     [SerializeField] GameObject games_Panel;
 
     [SerializeField] GameObject messageImage;
+
+    [SerializeField] TextMeshProUGUI testMessageText;
 
     public List<GameObject> textObjects_name = new List<GameObject>();
     public List<GameObject> textObjects_score = new List<GameObject>();
@@ -78,8 +80,37 @@ public class MainMenuUI : BaseUI
     {
         leaderBoard_Panel.SetActive(false);
         PlayButton.onClick.AddListener(OnButtonClick);
-        //ShowInfo();
+        //ShowInfo();        
     }
+
+
+    #region TEST_MESSAGES_FEATURE
+    //********
+    //[SerializeField] Color TestMessageColor;
+    [SerializeField] Image TestMessageImage;
+    public void Test_GetMessage(LootLockerGMMessage[] lootLockerGMMessages)
+    {
+        Debug.LogError("Messages length UI: " + lootLockerGMMessages.Length);
+        Debug.LogError("Pre Messages length PrefesKey: " + PlayerPrefs.GetInt("MessagesLength"));
+        var new_length = lootLockerGMMessages.Length;
+
+        var previous_length = PlayerPrefs.GetInt("MessagesLength");
+
+        if (new_length > 0 && new_length != previous_length)
+        {
+            TestMessageImage.color = Color.black;
+        }
+        PlayerPrefs.SetInt("MessagesLength", lootLockerGMMessages.Length);
+
+        for (int i = 0; i < lootLockerGMMessages.Length; i++)
+        {
+            testMessageText.text += lootLockerGMMessages[i].title;
+            testMessageText.text += lootLockerGMMessages[i].summary;
+            testMessageText.text += lootLockerGMMessages[i].body;
+        }
+    }
+    #endregion TEST_MESSAGES_FEATURE
+
 
     private void OnButtonClick()
     {

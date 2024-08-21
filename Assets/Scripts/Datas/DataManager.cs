@@ -40,7 +40,7 @@ namespace Datas
             }
             return returnValue;
         }
-        public static void SetData(PrefesKeys prefesKey, object value, Type valueType)
+        public static void SetData(PrefesKeys prefesKey, object value, Type valueType = Type.String)
         {
             if (valueType == Type.String) { PlayerPrefs.SetString(prefesKey.ToString(), value.ToString()); }
             else if (valueType == Type.Int) { PlayerPrefs.SetInt(prefesKey.ToString(), System.Convert.ToInt32(value)); }

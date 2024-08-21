@@ -10,7 +10,7 @@ public class BirdController : MonoBehaviour
     [Range(1, 20)][SerializeField] float jumpAmount;
     [SerializeField] FlappyBirdStatement flappyBirdStatement;
     
-
+    // Collionlari Interact classina kocurt: Umumi olacaq interact.
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

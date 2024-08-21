@@ -10,7 +10,7 @@ using Utils;
 public class LeaderboardProcessService : MonoBehaviour
 {
     //int leaderboardKey = 18872;
-    string leaderboardKey = "myHighScore1";
+    string leaderboardKey = Constants.LEADERBOARD_KEY; 
 
     public TextMeshProUGUI playerNames;
     public TextMeshProUGUI playerScores;
@@ -32,8 +32,8 @@ public class LeaderboardProcessService : MonoBehaviour
     {
         bool done = false;
         //string playerID = PlayerPrefs.GetString("PlayerID");
-        string playerID = DataManager.GetData(PrefesKeys.PlayerID);
-        LootLockerSDKManager.GetScoreList(leaderboardKey, scoreListCount, 0, (response) =>        
+        //string playerID = DataManager.GetData(PrefesKeys.PlayerID);
+        LootLockerSDKManager.GetScoreList(leaderboardKey, scoreListCount, 0, (response) =>
         {
             if (response.success)
             {                
@@ -45,6 +45,7 @@ public class LeaderboardProcessService : MonoBehaviour
 
                 for (int i = 0; i < members.Length; i++) // 3. membersin uzunlugu qeder massiv icinde dovr edirik.
                 {
+                    //Names:
                     Debug.LogError(members[i].player.name);
 
                     tempPlayerNames += members[i].rank + ". ";

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public const int PreviusGame_Scene_Count = 1;
     public UserManagerService userManager;
 
-    public LeaderboardProcessService leaderboard;
+    public LeaderboardProcessService leaderboardService;
     public static GameManager instance;
     public Scenes scenes;
     public Choice choice;
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private bool FirstTime_Open_Application()
     {
         bool isFirst_time = DataManager.CompareGameState(ApplicationState.openingCount); //, 
-            //DataManager.GetState_Application(ApplicationState.openingCount));
+                                                                                         //DataManager.GetState_Application(ApplicationState.openingCount));
         return isFirst_time;
     }
     public string FirstTime { get; set; }
@@ -44,11 +44,11 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         AppVersion = "Version: " + Application.version;
-        leaderboard = Object.FindObjectOfType<LeaderboardProcessService>();
-        userManager = Object.FindObjectOfType<UserManagerService>();
+        leaderboardService = FindObjectOfType<LeaderboardProcessService>();
+        userManager = FindObjectOfType<UserManagerService>();
     }
 
-    string leaderboardKey = "myHighScore1";
+    string leaderboardKey = Constants.LEADERBOARD_KEY;
     public IEnumerator SubmitScoreRoutine(int scoreToUpload)
     {
         bool done = false;

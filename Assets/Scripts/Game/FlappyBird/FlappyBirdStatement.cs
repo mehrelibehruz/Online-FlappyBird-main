@@ -13,7 +13,7 @@ public class FlappyBirdStatement : MonoBehaviour
     int scoreCount = 0;
     private void Awake()
     {
-        leaderboard = GameManager.instance.leaderboard;
+        leaderboard = GameManager.instance.leaderboardService;
     }
     private void Start()
     {
@@ -36,8 +36,10 @@ public class FlappyBirdStatement : MonoBehaviour
     public void UpdateScore()
     {
         scoreCount += 1;
+        print(scoreCount);
         flappyUI.UpdateScore(scoreCount);
         //GameManager.instance.Score = scoreCount;
         DataManager.SaveScore(PrefesKeys.FlappyBird, scoreCount);
+        Debug.Log("Flappy data score: " + DataManager.GetScore(PrefesKeys.FlappyBird).ToString());
     }
 }

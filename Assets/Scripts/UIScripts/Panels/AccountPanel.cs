@@ -56,7 +56,7 @@ public class AccountPanel : BasePanel
             WarningMessage_Text.gameObject.SetActive(true);
             return;
         }
-        print("check continue");
+        print("not null or white scpace check success");
         GameManager.instance.userManager.SetName(UserName);
     }
 
