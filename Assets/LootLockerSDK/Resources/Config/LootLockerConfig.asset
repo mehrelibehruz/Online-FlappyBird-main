@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: LootLockerConfig
   m_EditorClassIdentifier: 
   apiKey: dev_215d2791d07e4af88be66171f3ede637
-  token: e9770fcf13850a46b24a60f78ab81832e5f98ff9
+  token: d933cdeb65fe41e9f194bd3ed4ef80886eda472d
   adminToken: 
   refreshToken: 
   domainKey: nzyda7ka
   gameID: 0
-  game_version: 0.4.0.0
+  game_version: 0.9.0.0
   sdk_version: 2.1.5-assetstore
-  deviceID: a9373cba-ce35-4412-ab0d-10206984fa27
+  deviceID: 
   url: https://api.lootlocker.io/v1
   adminUrl: https://nzyda7ka.api.lootlocker.io/admin
   playerUrl: https://nzyda7ka.api.lootlocker.io/player

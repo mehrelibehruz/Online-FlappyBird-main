@@ -88,28 +88,47 @@ public class MainMenuUI : BaseUI
     //********
     //[SerializeField] Color TestMessageColor;
     [SerializeField] Image TestMessageImage;
-    public void Test_GetMessage(LootLockerGMMessage[] lootLockerGMMessages)
-    {
-        Debug.LogError("Messages length UI: " + lootLockerGMMessages.Length);
-        Debug.LogError("Pre Messages length PrefesKey: " + PlayerPrefs.GetInt("MessagesLength"));
-        var new_length = lootLockerGMMessages.Length;
+    // List<string> allMessages = new List<string>();
+    // public void Test_GetMessage(LootLockerGMMessage[] lootLockerGMMessages)
+    // {
+    //     Debug.LogError("Messages length UI: " + lootLockerGMMessages.Length);
+    //     Debug.LogError("Pre Messages length PrefesKey: " + PlayerPrefs.GetInt("MessagesLength"));
+    //     var new_length = lootLockerGMMessages.Length;
 
-        var previous_length = PlayerPrefs.GetInt("MessagesLength");
+    //     var previous_length = PlayerPrefs.GetInt("MessagesLength");
 
-        if (new_length > 0 && new_length != previous_length)
-        {
-            TestMessageImage.color = Color.black;
-        }
-        PlayerPrefs.SetInt("MessagesLength", lootLockerGMMessages.Length);
+    //     if (new_length > 0 && new_length != previous_length)
+    //     {
+    //         TestMessageImage.color = Color.black;
+    //     }
+    //     PlayerPrefs.SetInt("MessagesLength", lootLockerGMMessages.Length);
 
-        for (int i = 0; i < lootLockerGMMessages.Length; i++)
-        {
-            testMessageText.text += lootLockerGMMessages[i].title;
-            testMessageText.text += lootLockerGMMessages[i].summary;
-            testMessageText.text += lootLockerGMMessages[i].body;
-        }
-    }
+    //     for (int i = 0; i < lootLockerGMMessages.Length; i++)
+    //     {
+    //         testMessageText.text += lootLockerGMMessages[i].title;
+    //         testMessageText.text += lootLockerGMMessages[i].summary;
+    //         testMessageText.text += lootLockerGMMessages[i].body;
+
+    //         string message = lootLockerGMMessages[i].title;
+    //         if (!allMessages.Contains(message))
+    //         {
+    //             allMessages.Add(message);
+    //         }
+
+    //     }
+    // }
     #endregion TEST_MESSAGES_FEATURE
+
+    [SerializeField] GameObject signupPanel;
+    [SerializeField] GameObject loginPanel;
+    #region LOGIN_TEST
+    public void Open_Sign_or_Login_panel(int index)
+    {
+        if (index == 0) { account_Panel.gameObject.SetActive(true); }
+        else if (index == 1) { signupPanel.gameObject.SetActive(true); }
+        else if (index == 2) { loginPanel.gameObject.SetActive(true); }        
+    }
+    #endregion LOGIN_TEST
 
 
     private void OnButtonClick()

@@ -18,7 +18,7 @@ public abstract class BasePanel : BaseUI, I_UI
 
     public virtual void Close()
     {
-        Panel.SetActive(false);
+        Panel.gameObject.SetActive(false);
     }
 
     public virtual void InitButtons()

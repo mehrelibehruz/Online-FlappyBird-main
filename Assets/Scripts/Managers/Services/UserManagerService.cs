@@ -1,12 +1,12 @@
 using TMPro;
+using Datas;
+using Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using LootLocker.Requests;
 using System.Collections.Generic;
 using UnityEngine.SocialPlatforms.Impl;
-using Datas;
-using Utils;
 
 public class UserManagerService : MonoBehaviour
 {
@@ -50,7 +50,7 @@ public class UserManagerService : MonoBehaviour
     {
         yield return LoginRoutine();
 
-        yield return leaderboard.FetchTopHighscoresRoutineOrigin();
+        //yield return leaderboard.FetchTopHighscoresRoutineOrigin();
     }
 
     IEnumerator LoginRoutine()
@@ -69,19 +69,20 @@ public class UserManagerService : MonoBehaviour
                 done = true;
 
                 //var lootLockerMessagesResponse = new LootLockerGetMessagesResponse();
-                LootLockerSDKManager.GetMessages((response) =>
-                {
-                    if (response.messages.Length == 0) Debug.Log(response.messages[0].body);
-                    Debug.LogError("Messages length Service: " + response.messages.Length);
+                // LootLockerSDKManager.GetMessages((response) =>
+                // {
+                //     if (response.messages.Length == 0) Debug.Log(response.messages[0].body);
+                //     Debug.LogError("Messages length Service: " + response.messages.Length);
 
-                    //lootLockerMessagesResponse = response;
-                    //string msg = response.messages[0].body.ToString();
+                //     //lootLockerMessagesResponse = response;
+                //     //string msg = response.messages[0].body.ToString();
 
-                    LootLockerGMMessage[] messagesResponses = response.messages;
+                //     LootLockerGMMessage[] messagesResponses = response.messages;
 
-                    MainMenuUI.instance.Test_GetMessage(messagesResponses);
-                    //Debug.Log(response.messages[1].body.ToString());
-                });
+                //     // MainMenuUI.instance.Test_GetMessage(messagesResponses);
+
+                //     //Debug.Log(response.messages[1].body.ToString());
+                // });
             }
             else
             {

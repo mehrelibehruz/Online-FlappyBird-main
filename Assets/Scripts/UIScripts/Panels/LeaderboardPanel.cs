@@ -68,7 +68,7 @@ public class LeaderboardPanel : BasePanel
 
         yield return new WaitForSeconds(0.4f);
 
-        yield return leaderboardProcess.FetchTopHighscoresRoutineOrigin();
+       // yield return leaderboardProcess.FetchTopHighscoresRoutineOrigin();
     }
 
     public void _Close()
